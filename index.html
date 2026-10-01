@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09111f">
+  <title>My Money Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="My Money Map home">
+        <span class="brand-mark">₨</span>
+        <span><strong>Money Map</strong><small>personal finance</small></span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a class="nav-item active" href="#overview"><span>▦</span> Overview</a>
+        <a class="nav-item" href="#accounts"><span>◉</span> Accounts</a>
+        <a class="nav-item" href="#transactions"><span>↕</span> Transactions</a>
+        <a class="nav-item" href="#plan"><span>◎</span> Saving plan</a>
+      </nav>
+
+      <div class="sidebar-note">
+        <span>💡</span>
+        <p><strong>February mission</strong>Small steps, every payday.</p>
+      </div>
+      <p class="storage-note">Your data stays in this browser.</p>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Open menu">☰</button>
+        <div>
+          <p class="eyebrow" id="todayLabel">YOUR FINANCIAL HOME</p>
+          <h1>Good <span id="greetingTime">day</span>, Hasindu <span class="wave">👋</span></h1>
+        </div>
+        <div class="header-actions">
+          <button class="icon-button" id="themeButton" aria-label="Toggle theme">☀️</button>
+          <button class="primary-button" data-open-modal><span>＋</span> Add transaction</button>
+        </div>
+      </header>
+
+      <section id="overview" class="hero-grid reveal">
+        <article class="balance-card glass-card">
+          <div class="card-heading">
+            <span class="icon-chip violet">◫</span>
+            <span class="trend positive">↑ Healthy</span>
+          </div>
+          <p>Total balance</p>
+          <h2 id="totalBalance">LKR 0</h2>
+          <div class="balance-meta">
+            <span><i class="dot income"></i>Income <strong id="monthIncome">LKR 0</strong></span>
+            <span><i class="dot expense"></i>Expenses <strong id="monthExpense">LKR 0</strong></span>
+          </div>
+        </article>
+
+        <article class="goal-card glass-card">
+          <div class="goal-top">
+            <div>
+              <p>🎯 Savings goal</p>
+              <h2><span id="savedAmount">LKR 0</span> <small>/ LKR 400K</small></h2>
+            </div>
+            <button class="mini-button" id="editGoalButton">Edit</button>
+          </div>
+          <div class="progress-track"><span id="goalProgress"></span></div>
+          <div class="goal-meta">
+            <span id="goalPercent">0% saved</span>
+            <span id="goalDeadline">Due Feb 2027</span>
+          </div>
+          <div class="goal-insight" id="goalInsight">Add your current savings to begin tracking.</div>
+        </article>
+      </section>
+
+      <section class="stats-grid reveal">
+        <article class="stat-card"><div class="stat-icon mint">↙</div><div><p>This month's income</p><h3 id="statIncome">LKR 0</h3><small id="salaryStatus">Salary expected on the 10th</small></div></article>
+        <article class="stat-card"><div class="stat-icon coral">↗</div><div><p>This month's spending</p><h3 id="statExpense">LKR 0</h3><small id="budgetStatus">LKR 47K fixed monthly</small></div></article>
+        <article class="stat-card"><div class="stat-icon blue">◷</div><div><p>Safe to spend</p><h3 id="safeToSpend">LKR 0</h3><small>After expenses & saving plan</small></div></article>
+      </section>
+
+      <section class="content-grid reveal">
+        <article class="panel" id="accounts">
+          <div class="section-heading">
+            <div><p class="eyebrow">YOUR MONEY</p><h2>Bank accounts</h2></div>
+            <button class="text-button" id="editAccountsButton">Manage balances</button>
+          </div>
+          <div class="account-list" id="accountList"></div>
+        </article>
+
+        <article class="panel budget-panel" id="plan">
+          <div class="section-heading"><div><p class="eyebrow">MONTHLY PLAN</p><h2>Budget breakdown</h2></div><span class="plan-badge">LKR 145K base</span></div>
+          <div class="donut-area">
+            <div class="donut" id="budgetDonut"><div><strong id="donutPercent">32%</strong><span>committed</span></div></div>
+            <div class="legend">
+              <div><i style="--color:#8b5cf6"></i><span>Boarding</span><strong>LKR 11K</strong></div>
+              <div><i style="--color:#22c9a5"></i><span>Utilities</span><strong>LKR 26K</strong></div>
+              <div><i style="--color:#ff7a8a"></i><span>AI tools</span><strong>LKR 10K</strong></div>
+              <div><i style="--color:#2f9bff"></i><span>Available</span><strong>LKR 98K</strong></div>
+            </div>
+          </div>
+          <div class="payday-callout"><span>📅</span><p><strong>Payday rule</strong>Salary arrives in Commercial Bank on the 10th. Move savings to BOC first, then transfer spending money to HNB.</p></div>
+        </article>
+      </section>
+
+      <section class="panel transactions-panel reveal" id="transactions">
+        <div class="section-heading">
+          <div><p class="eyebrow">CASH FLOW</p><h2>Recent transactions</h2></div>
+          <div class="transaction-actions">
+            <select id="transactionFilter" aria-label="Filter transactions"><option value="all">All activity</option><option value="income">Income</option><option value="expense">Expenses</option></select>
+            <button class="primary-button compact" data-open-modal>＋ Add new</button>
+          </div>
+        </div>
+        <div class="transaction-list" id="transactionList"></div>
+      </section>
+
+      <footer>Made for a calmer financial life <span>•</span> Values shown in LKR</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="transactionModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="transactionModalTitle">
+      <button class="modal-close" data-close-modal aria-label="Close">×</button>
+      <p class="eyebrow">NEW ACTIVITY</p><h2 id="transactionModalTitle">Add transaction</h2>
+      <form id="transactionForm">
+        <label>Description<input id="txDescription" required placeholder="e.g. October salary"></label>
+        <div class="form-row">
+          <label>Type<select id="txType"><option value="income">Income</option><option value="expense">Expense</option></select></label>
+          <label>Amount (LKR)<input id="txAmount" required type="number" min="1" step="1" placeholder="145000"></label>
+        </div>
+        <div class="form-row">
+          <label>Account<select id="txAccount"><option>Commercial Bank</option><option>HNB</option><option>BOC</option></select></label>
+          <label>Date<input id="txDate" required type="date"></label>
+        </div>
+        <label>Category<select id="txCategory"><option>Salary</option><option>Extra income</option><option>Boarding</option><option>Utilities</option><option>AI tools</option><option>Medicine</option><option>Food</option><option>Transport</option><option>Other</option></select></label>
+        <button class="primary-button full" type="submit">Save transaction</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="accountModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true"><button class="modal-close" data-close-account aria-label="Close">×</button><p class="eyebrow">CURRENT BALANCES</p><h2>Update accounts</h2><form id="accountForm"><div id="accountInputs"></div><button class="primary-button full" type="submit">Update balances</button></form></div>
+  </div>
+
+  <div class="modal-backdrop" id="goalModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true"><button class="modal-close" data-close-goal aria-label="Close">×</button><p class="eyebrow">YOUR TARGET</p><h2>Edit savings goal</h2><form id="goalForm"><label>Goal amount (LKR)<input id="goalTargetInput" type="number" min="1" required></label><label>Already saved (LKR)<input id="goalSavedInput" type="number" min="0" required></label><label>Deadline<input id="goalDateInput" type="date" required></label><button class="primary-button full" type="submit">Save goal</button></form></div>
+  </div>
+
+  <div class="toast" id="toast">✓ Saved successfully</div>
+  <script src="app.js"></script>
+</body>
+</html>

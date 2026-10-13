@@ -8,3 +8,9 @@ body.light{--bg:#f4f7fc;--surface:#fff;--surface-2:#f0f3f9;--surface-soft:rgba(2
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .transaction-item{grid-template-columns:42px minmax(140px,1fr) 110px 100px 120px 24px}
 @media(max-width:720px){.transaction-item{grid-template-columns:40px minmax(0,1fr) auto 22px}}
+.stats-grid{grid-template-columns:repeat(4,1fr)}
+#categoryLegend{display:grid;grid-template-columns:1fr;gap:9px}#categoryLegend>div{display:grid;grid-template-columns:8px 1fr auto;align-items:center;gap:7px}
+.month-picker{display:flex;align-items:center;gap:8px;padding:0 10px;border:1px solid var(--line);background:var(--surface-soft);border-radius:12px;color:var(--muted);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}.month-picker select{border:0;background:transparent;color:var(--text);font-weight:700;outline:none}.month-picker option{background:var(--surface);color:var(--text)}
+.transaction-amount.transfer{color:var(--blue)}.negative-text{color:var(--coral)!important}.empty-inline{font-size:10px;color:var(--muted);margin:0}.modal-help{font-size:11px;color:var(--muted);margin:-12px 0 18px}.account-edit-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+@media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.stats-grid{grid-template-columns:1fr}.month-picker span{display:none}.month-picker{padding:0 5px}.month-picker select{max-width:108px;font-size:10px}.account-edit-row{grid-template-columns:1fr}.topbar h1{font-size:18px}}
